@@ -1,7 +1,24 @@
 <div class="container ">
-    <form class="input-group">
-        <input type="text" class="form-control border-primary rounded-pill" placeholder="Search Github or type a username " name="sv" [(ngModel)]="searchValue" >
+    <form>
+        <div class="text-center mt-3" [formGroup]="opshons">
+            <input class="form-check-input " type="radio" formControlName="queryFor" id="username" value="username"
+              checked>
+            <label class="form-check-label mx-1" for="username">
+              Username
+            </label>
+            <input class="form-check-input " type="radio" id="repo" value="repo" formControlName="queryFor">
+            <label class="form-check-label mx-1" for="repo">
+              Repository
+            </label>
+          </div>
+        
+          <div class="input-group" (keydown.enter)="search(searchValue.value)">
+            <input type="text" class="form-control border-primary rounded-pill" placeholder="Search Github or type a username "
+              name="searchValue" [formControl]="searchValue">
+          </div>
+        
+          <p class="text-center text-primary text-decoration-underline" (click)="search(searchValue.value)">{{searchValue.value}} <i class="fa fa-search "></i></p>
     </form>
-     <p>{{searchValue}}</p><p class="text-end"><i class="fa fa-search "></i></p>
-    
+
+
 </div>
