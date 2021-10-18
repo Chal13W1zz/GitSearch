@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+import { DetailsComponent } from './components/details/details.component';
+import { TimeAgoPipe } from './pipes/time-ago.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    DetailsComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
