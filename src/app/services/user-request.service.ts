@@ -9,9 +9,11 @@ import { User } from '../classes/user';
 export class UserRequestService {
 
   constructor(private http: HttpClient) {
+   
    }
 
    queryUser(query:string){
+  
      let promise = new Promise((resolve, reject)=>{
        this.http.get<User>(environment.apiUrl+query,{headers: new HttpHeaders({'Authorization': 'token ' + environment.apiKey})}).toPromise().then((response) =>{
          resolve(response);

@@ -6,10 +6,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RepoRequestService {
+  allRepos : any;
 
-  queryRepo(query:string){
-
-     return this.http.get<any>(environment.apiUrl+query,{headers: new HttpHeaders({'Authorization': 'token ' + environment.apiKey})}).toPromise();
+  queryRepo(query:string):any{
+    this.allRepos = this.http.get<any>(environment.apiUrl+query,{headers: new HttpHeaders({'Authorization': 'token ' + environment.apiKey})}).toPromise();
+    return this.allRepos;
 
   }
 
