@@ -46,3 +46,5 @@ Thumbs.db
 
 # Secrets
 /environments
+environment.ts
+environment.prod.ts
