@@ -7,20 +7,21 @@ import { User } from '../classes/user';
   providedIn: 'root'
 })
 export class UserRequestService {
+  promise: any;
 
   constructor(private http: HttpClient) {
-   
-   }
 
-   queryUser(query:string){
-  
-     let promise = new Promise((resolve, reject)=>{
-       this.http.get<User>(environment.apiUrl+query,{headers: new HttpHeaders({'Authorization': 'token ' + environment.apiKey})}).toPromise().then((response) =>{
-         resolve(response);
-       }, error=>{
-         reject(error);
-       } );
-     });
-     return promise;
-   }
+  }
+
+  queryUser(query: string) {
+
+    this.promise = new Promise((resolve, reject) => {
+      this.http.get<User>(environment.apiUrl + query, { headers: new HttpHeaders({ 'Authorization': 'token ' + atob(environment.apiKey) }) }).toPromise().then((response) => {
+        resolve(response);
+      }, error => {
+        reject(error);
+      });
+    });
+    return this.promise;
+  }
 }

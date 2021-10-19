@@ -1,37 +1,39 @@
-<div class="card" >
+<div class="">
+  <div class="card">
     <div class="card-header">
+      <p (click)="back()" class="text-primary"><i class="fa fa-arrow-left"></i></p>
       <h4 class="text-center">repositories</h4>
     </div>
     <div class="card-body" *ngFor="let repo of userRepositories; let i = index">
-  
-  <div class="table-responsive">
-    <table class="table">
-      <thead class="text-primary">
-        <th>
-        </th>
-        <th>Project Title</th>
-        <th>Language</th>
-        <th>Repo description</th>
-        <th>Last Updated</th>
-        <th></th>
-        
-      </thead>
-      <tbody>
-        <tr>
-  
-          <td> <img class="rounded-circle" src="assets/inspectocat.jpg" alt="user avatar" height="100px"> </td>
-          <td> {{repo.name}} </td>
-          <td> {{repo.language}} </td>
-          <td> {{repo.description}} </td>
-          <td> {{repo.updated_at| timeAgo}} </td>
-          <td> <span><a class="btn btn-outline-primary" href="{{repo.html_url}}" >View</a></span> </td>
-        </tr>
-      </tbody>
-    </table>
-  
-  </div>
-  
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <th class="col-2">
+            </th>
+            <th class="col-2">Project Title</th>
+            <th class="col-1">Language</th>
+            <th class="col-4">Repo description</th>
+            <th class="col-2">Last Updated</th>
+            <th class="col-1"></th>
+
+          </thead>
+          <tbody>
+            <tr>
+
+              <td> <img class="rounded-circle" [src]="user.avatar_url" alt="user avatar" height="100px"> </td>
+              <td> {{repo.name}} </td>
+              <td> {{repo.language}} </td>
+              <td> {{repo.description}} </td>
+              <td> {{repo.updated_at| timeAgo}} </td>
+              <td> <span><a class="btn btn-outline-primary" href="{{repo.html_url}}">View</a></span> </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
     </div>
   </div>
-  
-  
+
+</div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RepoRequestService } from 'src/app/services/repo-request.service';
+import { UserRequestService } from 'src/app/services/user-request.service';
 
 @Component({
   selector: 'app-details',
@@ -7,32 +9,35 @@ import { RepoRequestService } from 'src/app/services/repo-request.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
- 
-  userRepositories: any[] = [];
 
-  constructor(private requestRepoService: RepoRequestService) { 
-    //  this.userRepositories = requestRepoService;
-    // this.requestRepoService.queryRepo(this.username)
+  userRepositories: any[] = [];
+  user: any;
+
+  back() {
+    this.router.navigate([''])
+  }
+
+  constructor(private requestRepoService: RepoRequestService, private router: Router, private requestUserservice: UserRequestService) {
   }
 
   ngOnInit(): void {
-    // console.log(user)
-   
-    this.requestRepoService.allRepos.then((response: any)=>{
+    this.requestRepoService.allRepos.then((response: any) => {
       this.userRepositories = response;
-      console.log(response[1])
-    },(error: any)=>{
+
+    }, (error: any) => {
       console.log(error)
     })
-  
-    // this.service.then((response: any) => {
-    //   console.log("legit stuff",response)
-    // },(error: any)=>{
-    //   console.log(error)
-    // })
 
-   
-    // console.log("0000000",this.service)
+    this.requestUserservice.promise.then((response: any) => {
+      this.user = response;
+    }, (error: any) => {
+      console.log(error)
+    })
+
+  }
+
+  ngOnDestroy(): void {
+    // this.router.navigate(['']);
   }
 
 }

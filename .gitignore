@@ -43,8 +43,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Secrets
 /environments
 environment.ts
 environment.prod.ts

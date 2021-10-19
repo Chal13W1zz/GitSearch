@@ -9,7 +9,7 @@ export class RepoRequestService {
   allRepos : any;
 
   queryRepo(query:string):any{
-    this.allRepos = this.http.get<any>(environment.apiUrl+query,{headers: new HttpHeaders({'Authorization': 'token ' + environment.apiKey})}).toPromise();
+    this.allRepos = this.http.get<any>(environment.apiUrl+query,{headers: new HttpHeaders({'Authorization': 'token ' + atob(environment.apiKey)})}).toPromise();
     return this.allRepos;
 
   }
